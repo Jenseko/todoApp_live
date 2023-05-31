@@ -1,3 +1,4 @@
+
 import express from 'express';
 import cors from 'cors';
 import { FileHandler } from "./Model.js";
@@ -52,7 +53,6 @@ app.get('/todos/:id', (req, res) => {
 app.post('/todos', (req, res) => {
     const data = req.body;
     TodosModel.addDataEntry(data);
-    // console.log(data);
     res.send(data);
 })
 
@@ -64,7 +64,6 @@ app.put('/todos/:id', (req, res) => {
     const updateData = req.body;
     const id = req.params.id;
     const result = TodosModel.updateOne(id, updateData);
-    console.log(result);
     res.send(result);
 });
 
