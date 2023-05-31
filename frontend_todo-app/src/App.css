@@ -1,38 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
+  /* background-color: rgb(165, 102, 224); */
+  background: rgb(202, 142, 247);
+  background: linear-gradient(9deg, rgba(202, 142, 247, 1) 0%, rgb(178, 90, 255) 42%, rgb(119, 18, 213) 100%);
+  border-radius: 10px;
+  margin: 5rem auto 0 auto;
   text-align: center;
+  height: 60%;
+  width: clamp(26rem, 60%, 60rem);
+  border: 1px soli rgb(185, 151, 216);
+  color: rgb(68, 19, 114);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App h1 {
+  padding: 30px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+section {
+  padding-bottom: 3rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+section form input {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid rgb(185, 151, 216);
+  margin: 10px;
+}
+
+
+section ul div {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+section ul div li {
+  display: flex;
+  justify-content: flex-start;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  margin: 15px;
+  background-color: #d1aaf5;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+section ul div li input[type="checkbox"] {
+  margin: 15px;
+}
+
+section ul div li span {
+  margin-left: 10px;
+  text-transform: capitalize;
+}
+
+img {
+  width: 2rem;
+  border: 1px solid white;
+  border-radius: 50px;
+  margin: 0 10px 0 auto;
 }
