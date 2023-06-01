@@ -53,6 +53,10 @@ section ul div li input[type="checkbox"] {
   margin: 15px;
 }
 
+#checkbox {
+  accent-color: rgb(255, 165, 0);
+}
+
 section ul div li span {
   margin-left: 10px;
   text-transform: capitalize;

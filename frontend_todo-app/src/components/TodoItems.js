@@ -22,7 +22,7 @@ const TodoItems = (props) => {
     return (
         <div>
             <li style={{ textDecoration: finish ? "line-through" : "none", listStyle: 'none' }}>
-                <input type="checkbox" onChange={done} />
+                <input type="checkbox" id="checkbox" onChange={done} />
                 <span>{props.todo}</span>
                 <img src={icon} alt="trash icon" onClick={deleteTodo} />
             </li>
