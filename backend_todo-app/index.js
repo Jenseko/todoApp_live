@@ -1,81 +1,56 @@
-
 import express from 'express';
-import cors from 'cors';
-import { FileHandler } from "./Model.js";
+import mongoose from 'mongoose';
+import { Todo } from "./Model/Todo.js";
+import 'dotenv/config';
+mongoose.connect(process.env.DB);
 
 // -----------------------------------
-
 
 const app = express();
 const port = process.env.Port || 3001;
 
 app.use(express.json());
-app.use(express.static("../frontend_todo-app/build"));
-app.use(cors());
-
 
 app.get('/', (req, res) => {
     res.send('It`s working!');
 });
 
-const path = './data/todos.json';
+// ---- GET ~/api/todos -------------------
 
 
-// ---- MODEL -------------------------
-
-
-const TodosModel = await FileHandler(
-    new URL(path, (import.meta.url))
-);
-
-// ---- GET ~/todos -------------------
-
-
-app.get('/todos', async (req, res) => {
-    const data = TodosModel.getData();
-    res.send(data);
+app.get('/api/todos', async (req, res) => {
+    const todos = await Todo.find();
+    res.send(todos);
 });
 
 
-// ---- GET ~/todos/:id ---------------
+// ---- POST ~/api/todos ------------------
 
 
-app.get('/todos/:id', (req, res) => {
-    const id = req.params.id;
-    const data = TodosModel.getOne(id);
-    res.send(data);
-});
-
-
-// ---- POST ~/todos ------------------
-
-
-app.post('/todos', (req, res) => {
-    const data = req.body;
-    TodosModel.addDataEntry(data);
-    res.send(data);
-})
-
-
-// ----- PUT ~/todos/:id --------------
-
-
-app.put('/todos/:id', (req, res) => {
-    const updateData = req.body;
-    const id = req.params.id;
-    const result = TodosModel.updateOne(id, updateData);
-    res.send(result);
+app.post('/todos', async (req, res) => {
+    try {
+        // mongoose validiert
+        const newTodo = await Todo.create(reg.body);
+        res.send({ inputTodo: newTodo, errors: null });
+    } catch (error) {
+        // wenn ein Fehler auftritt, wird dieser ans Frontend geschickt
+        res.send({ inputTodo: null, errors: error.errors });
+    }
 });
 
 
 // ----- DELETE ~/todos/:id -----------
 
 
-app.delete('/todos/:id', (req, res) => {
-    const id = req.params.id;
-    TodosModel.deleteOne(id);
-    res.send("Deleted");
-})
+// app.delete('/api/todos/:id', (req, res) => {
+//     try {
+//         const id = req.params.id;
+//         const deleteTodo =
+//     }
+
+//     TodosModel.deleteOne(id);
+//     res.send("Deleted");
+// })
 
 
 // -------------------

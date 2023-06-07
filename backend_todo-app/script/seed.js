@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Todo } from '../model/Todo.js';
+import { Todo } from './model/Todo.js';
 import 'dotenv/config';
 
 await mongoose.connect(process.env.DB);
