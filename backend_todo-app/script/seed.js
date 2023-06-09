@@ -11,7 +11,7 @@ await mongoose.connect(process.env.DB);
 
 // Option 2
 const user2 = new Todo({
-    title: "Abwwasch machen",
+    title: "Abwasch machen",
     completed: false
 });
 await user2.save();

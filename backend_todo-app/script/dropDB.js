@@ -13,3 +13,5 @@ if (isDeleted) {
 } else {
     console.log("Database is not dropped");
 }
+
+mongoose.disconnect();
