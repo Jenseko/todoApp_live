@@ -1,4 +1,5 @@
 import './App.css';
+import TodoItems from './components/TodoItems';
 // ------------------
 
 import TodoList from './components/TodoList';

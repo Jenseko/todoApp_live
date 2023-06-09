@@ -82,8 +82,8 @@ const TodoList = () => {
                         <TodoItems
                             key={index}
                             todo={elt}
-                            delete={setTodos}
-                            completeTodoArr={todos}
+                            deleteTodo={deleteTodo}
+                            updateTodo={updateTodo}
                         />
                     )
                 })}

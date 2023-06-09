@@ -1,30 +1,23 @@
-import React, { useState } from 'react';
+
 import icon from './img/PngItem_2009230.png';
 
 // ---------------------------------------------------
 
-const TodoItems = (props) => {
-    const [finish, setFinish] = useState(false);
+const TodoItems = ({ todo, deleteTodo, updateTodo }) => {
+
     console.log(props);
 
-    const done = () => {
-        // not ! operator => toggle funktion
-        setFinish(!finish);
-    }
 
-    const deleteTodo = () => {
-        // filtert alles raus was nicht mein einzelnes todo ist
-        const newTodoList = props.completeTodoArr.filter((elt) => {
-            return elt !== props.todo
-        })
-        props.delete(newTodoList);
-    }
     return (
         <div>
-            <li style={{ textDecoration: finish ? "line-through rgb(178, 90, 255) 2px" : "none", listStyle: 'none' }}>
-                <input type="checkbox" id="checkbox" onChange={done} />
-                <span>{props.todo}</span>
-                <img src={icon} alt="trash icon" onClick={deleteTodo} />
+            <li style={{ textDecoration: todo.completed ? "line-through rgb(178, 90, 255) 2px" : "none", listStyle: 'none' }}>
+                <input
+                    type="checkbox" id="checkbox"
+                    onChange={() => updateTodo(todo._id)}
+                    defaultChecked={todo.completed}
+                />
+                <span>{todo.title}</span>
+                <img src={icon} alt="trash icon" onClick={() => deleteTodo(todo._id)} />
             </li>
         </div>
     );
